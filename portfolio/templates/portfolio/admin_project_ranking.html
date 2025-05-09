@@ -1,0 +1,18 @@
+<h1>관리자: 프로젝트 평가 순위</h1>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>등수</th>
+        <th>프로젝트 이름</th>
+        <th>평균 점수</th>
+        <th>총 평가 수</th>
+    </tr>
+    {% for project in projects %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ project.title }}</td>
+        <td>{{ project.avg_score|default:"0.0"|floatformat:2 }}</td>
+        <td>{{ project.ratings.count }}</td>
+    </tr>
+    {% endfor %}
+</table>

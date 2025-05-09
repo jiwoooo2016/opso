@@ -1,0 +1,44 @@
+<!-- portfolio/templates/portfolio/project_ranking.html -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>프로젝트 평가 순위</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 60%; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>프로젝트 평가 순위</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>등수</th>
+                <th>프로젝트명</th>
+                <th>설명</th>
+                <th>평균 점수</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ project.title }}</td>
+                <td>{{ project.description }}</td>
+                <td>
+                    {% if project.avg_score %}
+                        {{ project.avg_score|floatformat:1 }}
+                    {% else %}
+                        없음
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
